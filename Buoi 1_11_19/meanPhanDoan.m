@@ -1,16 +1,17 @@
-function [a,b] = meanPhanDoan(RGB, dong, cot, min, max)    
-    sum=0;
+function mean = meanPhanDoan(img, min, max)    
+    sum=double(0);
     soLuong = 0;
+    [dong, cot] = size(img);
+    img = double(img);
     for i=1:dong
         for j=1:cot
-            if(RGB(i, j) > min)
-                if(RGB(i, j) < max)
-                    sum = sum + int16(RGB(i, j));
+            if(img(i, j) > min)
+                if(img(i, j) < max)
+                    sum = sum + img(i, j);
                     soLuong = soLuong + 1;
                 end
             end
         end
     end
-    a = sum;
-    b= soLuong;
+    mean = (sum / soLuong);
 end
